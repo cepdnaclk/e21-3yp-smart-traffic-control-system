@@ -1,11 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const TrafficData = require('./models/TrafficData'); // Import the model we created
+const cors = require('cors'); // Added CORS
+const TrafficData = require('./models/TrafficData');
 
 const app = express();
 const PORT = 5000;
 
-// Middleware: This allows the server to read JSON data sent in a POST request
+// Middleware
+app.use(cors()); // Enable CORS so Frontend can talk to Backend
 app.use(express.json());
 
 // 1. Connect to MongoDB
@@ -13,7 +15,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/hydra_db')
     .then(() => console.log('✅ MongoDB Connected Successfully!'))
     .catch(err => console.error('❌ Database Connection Error:', err));
 
-// 2. Simple Test Route (Browser Check)
+// 2. Simple Test Route
 app.get('/', (req, res) => {
     res.send('HYDRA Server is running and connected to DB!');
 });
@@ -21,7 +23,7 @@ app.get('/', (req, res) => {
 // 3. API Route: Get all traffic data (GET)
 app.get('/api/traffic', async (req, res) => {
     try {
-        const data = await TrafficData.find().sort({ timestamp: -1 }); // Get latest data first
+        const data = await TrafficData.find().sort({ timestamp: -1 });
         res.json(data);
     } catch (err) {
         res.status(500).json({ error: err.message });

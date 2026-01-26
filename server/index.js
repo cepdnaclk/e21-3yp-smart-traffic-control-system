@@ -110,12 +110,32 @@ aedes.on('publish', async (packet, client) => {
     }
 });
 
-// 4. Start the Web Server
+// 4. Control Route: Frontend sends commands to Traffic Lights
+app.post('/api/traffic/control', (req, res) => {
+    const { location, command } = req.body; // e.g., { location: "Galle Road", command: "RED" }
+    
+    const topic = `traffic/control/${location}`;
+    const message = JSON.stringify({ action: command, timestamp: new Date() });
+
+    // Publish the command to the MQTT broker
+    aedes.publish({
+        topic: topic,
+        payload: message,
+        qos: 0,
+        retain: false
+    }, (err) => {
+        if (err) return res.status(500).json({ error: "Failed to send command" });
+        console.log(`📡 Command sent to ${topic}: ${command}`);
+        res.json({ message: "Command sent successfully" });
+    });
+});
+
+// 5. Start the Web Server
 app.listen(PORT, () => {
     console.log(`✅ Dashboard API running on http://localhost:${PORT}`);
 });
 
-// 5. Start the MQTT Broker
+// 6. Start the MQTT Broker
 mqttServer.listen(MQTT_PORT, () => {
     console.log(`📡 MQTT Broker (IoT Hub) running on port ${MQTT_PORT}`);
 });

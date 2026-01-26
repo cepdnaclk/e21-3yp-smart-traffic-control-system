@@ -1,26 +1,72 @@
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors'); // Added CORS
+// const TrafficData = require('./models/TrafficData');
+
+// const app = express();
+// const PORT = 5000;
+
+// // Middleware
+// app.use(cors()); // Enable CORS so Frontend can talk to Backend
+// app.use(express.json());
+
+// // 1. Connect to MongoDB
+// mongoose.connect('mongodb://127.0.0.1:27017/hydra_db')
+//     .then(() => console.log('✅ MongoDB Connected Successfully!'))
+//     .catch(err => console.error('❌ Database Connection Error:', err));
+
+// // 2. Simple Test Route
+// app.get('/', (req, res) => {
+//     res.send('HYDRA Server is running and connected to DB!');
+// });
+
+// // 3. API Route: Get all traffic data (GET)
+// app.get('/api/traffic', async (req, res) => {
+//     try {
+//         const data = await TrafficData.find().sort({ timestamp: -1 });
+//         res.json(data);
+//     } catch (err) {
+//         res.status(500).json({ error: err.message });
+//     }
+// });
+
+// // 4. API Route: Receive data from IoT Sensors (POST)
+// app.post('/api/traffic', async (req, res) => {
+//     try {
+//         const newData = new TrafficData(req.body);
+//         await newData.save();
+//         res.json({ message: "✅ Data received by HYDRA", data: newData });
+//     } catch (err) {
+//         res.status(400).json({ error: err.message });
+//     }
+// });
+
+// // 5. Start the Server
+// app.listen(PORT, () => {
+//     console.log(`🚀 HYDRA Engine running on http://localhost:${PORT}`);
+// });
+
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
-const cors = require('cors'); // Added CORS
+const aedes = require('aedes')();
+const net = require('net');
 const TrafficData = require('./models/TrafficData');
 
 const app = express();
 const PORT = 5000;
+const MQTT_PORT = 1883; // Standard port for IoT devices
 
 // Middleware
-app.use(cors()); // Enable CORS so Frontend can talk to Backend
+app.use(cors());
 app.use(express.json());
 
 // 1. Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/hydra_db')
-    .then(() => console.log('✅ MongoDB Connected Successfully!'))
-    .catch(err => console.error('❌ Database Connection Error:', err));
+    .then(() => console.log('✅ MongoDB Connected'))
+    .catch(err => console.error('❌ MongoDB Error:', err));
 
-// 2. Simple Test Route
-app.get('/', (req, res) => {
-    res.send('HYDRA Server is running and connected to DB!');
-});
-
-// 3. API Route: Get all traffic data (GET)
+// 2. HTTP Routes (For Frontend Dashboard)
 app.get('/api/traffic', async (req, res) => {
     try {
         const data = await TrafficData.find().sort({ timestamp: -1 });
@@ -30,18 +76,46 @@ app.get('/api/traffic', async (req, res) => {
     }
 });
 
-// 4. API Route: Receive data from IoT Sensors (POST)
-app.post('/api/traffic', async (req, res) => {
-    try {
-        const newData = new TrafficData(req.body);
-        await newData.save();
-        res.json({ message: "✅ Data received by HYDRA", data: newData });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+// 3. MQTT BROKER LOGIC (The "Nervous System")
+const mqttServer = net.createServer(aedes.handle);
+
+// Notify when a sensor/traffic light connects
+aedes.on('client', (client) => {
+    console.log(`🔌 New Device Connected: ${client ? client.id : 'Unknown'}`);
+});
+
+// Listen for incoming data from the IoT devices
+aedes.on('publish', async (packet, client) => {
+    if (client) {
+        const topic = packet.topic;
+        const payload = packet.payload.toString();
+        console.log(`📩 Topic [${topic}]: ${payload}`);
+
+        // Automatically save data from sensors to the Database
+        if (topic.startsWith('traffic/data')) {
+            try {
+                const parsedData = JSON.parse(payload);
+                
+                // This updates the existing location or creates a new one
+                await TrafficData.findOneAndUpdate(
+                    { location: parsedData.location },
+                    parsedData,
+                    { upsert: true, new: true }
+                );
+                console.log("💾 Traffic Data Auto-Saved to DB");
+            } catch (e) {
+                console.log("⚠️ Received non-JSON message on traffic topic");
+            }
+        }
     }
 });
 
-// 5. Start the Server
+// 4. Start the Web Server
 app.listen(PORT, () => {
-    console.log(`🚀 HYDRA Engine running on http://localhost:${PORT}`);
+    console.log(`✅ Dashboard API running on http://localhost:${PORT}`);
+});
+
+// 5. Start the MQTT Broker
+mqttServer.listen(MQTT_PORT, () => {
+    console.log(`📡 MQTT Broker (IoT Hub) running on port ${MQTT_PORT}`);
 });

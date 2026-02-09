@@ -1,57 +1,78 @@
-___
-# DELETE THIS INSTRUCTIONS AND ADD AN INTRODUCTION ABOUT YOUR PROJECT
-___
+# HYDRA: HYbrid Dynamic Realtime Automation
 
-# eYY-3yp-project-template
+**Intelligent Traffic Control System with Green Wave Technology**
 
-This is a sample repository you can use for your Embedded Systems project. Once you followed these instructions, remove the text and add a brief introduction to here.
+---
+
+### Project Overview
+
+**HYDRA** is a smart traffic management system designed to eliminate static signal timers and adapt to real-time road conditions. By combining **Edge Computing (ESP32)** with **Cloud Intelligence (Raspberry Pi/MERN Stack)**, HYDRA dynamically adjusts traffic light durations based on vehicle density, queue lengths, and weather conditions.
+
+Key capabilities include:
+***Real-time Traffic Adaptive Timing:** Uses ultrasonic and IR sensors to detect vehicle queues and adjust green light duration instantly.
+***Emergency "Green Wave":** Automatically clears intersections for approaching ambulances or fire trucks.
+***Weather Awareness:** Detects rain and automatically extends yellow light duration to prevent accidents on slippery roads.
+***Pedestrian Prioritization:** Smart crossing buttons that manage pedestrian flow without causing massive traffic backups.
+
+### Solution Architecture
+
+The system operates on a **Hybrid Edge-Cloud** model:
+1. **Edge Nodes (ESP32):** Located at each junction pole, handling immediate sensor readings (Ultrasonic, IR, Rain) and controlling the lights.
+2. **Central Brain (Raspberry Pi):** Acts as the local server and MQTT broker, coordinating the logic between different poles.
+3.  **Cloud Dashboard:** A MERN stack application for remote monitoring and manual override control.
+
+---
 
 ### Enable GitHub Pages
 
-You can put the things to be shown in GitHub pages into the _docs/_ folder. Both html and md file formats are supported. You need to go to settings and enable GitHub pages and select _main_ branch and _docs_ folder from the dropdowns, as shown in the below image.
+The documentation for this project is hosted via GitHub Pages.
+1.  Go to **Settings** > **Pages**.
+2.  Select the **main** branch and the **docs/** folder.
+3.  Click **Save**.
 
-![image](https://user-images.githubusercontent.com/11540782/98789936-028d3600-2429-11eb-84be-aaba665fdc75.png)
+Project page will be available at: `https://cepdnaclk.github.io/e21-3yp-HYDRA
 
-### Special Configurations
+---
 
-These projects will be automatically added into [https://projects.ce.pdn.ac.lk](). If you like to show more details about your project on this site, you can fill the parameters in the file, _/docs/index.json_
+### Project Configuration (`docs/index.json`)
 
-```
+To list this project on the unified engineering projects site, update your `docs/index.json` file with the following content:
+
+```json
 {
-  "title": "This is the title of the project",
+  "title": "HYDRA: HYbrid Dynamic Realtime Automation",
   "team": [
     {
-      "name": "Team Member Name 1",
-      "email": "email@eng.pdn.ac.lk",
-      "eNumber": "E/yy/xxx"
+      "name": "Diwyanjali Jayasooriya",
+      "email": "e21196@eng.pdn.ac.lk",
+      "eNumber": "E/21/196"
     },
     {
-      "name": "Team Member Name 2",
-      "email": "email@eng.pdn.ac.lk",
-      "eNumber": "E/yy/xxx"
+      "name": "Samadhini Perera",
+      "email": "e21289@eng.pdn.ac.lk",
+      "eNumber": "E/21/289"
     },
     {
-      "name": "Team Member Name 3",
-      "email": "email@eng.pdn.ac.lk",
-      "eNumber": "E/yy/xxx"
+      "name": "Vedangi Nadeeshani",
+      "email": "e21193@eng.pdn.ac.lk",
+      "eNumber": "E/21/193"
     }
   ],
   "supervisors": [
     {
-      "name": "Dr. Supervisor 1",
-      "email": "email@eng.pdn.ac.lk"
+      "name": "Ms. Yashodha Vimukthi",
+      "email": "yasodhav@eng.pdn.ac.lk"
     },
     {
-      "name": "Supervisor 2",
-      "email": "email@eng.pdn.ac.lk"
+      "name": "Thiliru Samaradiwakara",
+      "email": "e19489@eng.pdn.ac.lk"
     }
   ],
-  "tags": ["Web", "Embedded Systems"]
+  "tags": [
+    "IoT",
+    "Embedded Systems",
+    "Smart City",
+    "Automation",
+    "Cloud Computing"
+  ]
 }
-```
-
-Once you filled this _index.json_ file, please verify the syntax is correct. (You can use [this](https://jsonlint.com/) tool).
-
-### Page Theme
-
-A custom theme integrated with this GitHub Page, which is based on [github.com/cepdnaclk/eYY-project-theme](https://github.com/cepdnaclk/eYY-project-theme). If you like to remove this default theme, you can remove the file, _docs/\_config.yml_ and use HTML based website.

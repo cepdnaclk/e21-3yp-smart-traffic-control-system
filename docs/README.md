@@ -3,8 +3,8 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and project title
-repository-name: eYY-3yp-project-template
-title: Project Template
+repository-name: e21-3yp-HYDRA
+title: HYDRA
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
@@ -109,8 +109,8 @@ All items and costs
 HYDRA demonstrates how **adaptive algorithms and IoT connectivity** can solve the persistent problem of traffic congestion. By prioritizing **real-time responsiveness and emergency transit**, HYDRA not only improves daily commute efficiency but also saves lives—making our roads **safer, smarter, and more efficient**.
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/e21-3yp-smart-traffic-control-system){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/e21-3yp-smart-traffic-control-system){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e21-3yp-HYDRA){:target="_blank"}
+- [Project Page](https://cepdnaclk.github.io/e21-3yp-HYDRA){:target="_blank"}
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 

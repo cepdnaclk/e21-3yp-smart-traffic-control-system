@@ -1,13 +1,9 @@
-# This theme is based on https://github.com/jekyll/minima
-# Please refer above link to know the available configurations
-
-title: ""
-remote_theme: cepdnaclk/eYY-project-theme
-description: ""
-markdown: kramdown
-
-kramdown:
-  parse_block_html: true
-  syntax_highlighter_opts:
-    block:
-      line_numbers: false
+# Create _config.yml
+@'
+---
+layout: default
+permalink: index.html
+repository-name: e21-3yp-smart-traffic-control-system
+title: "HYDRA: HYbrid Dynamic Realtime Automation"
+---
+'@ | Out-File -FilePath _config.yml -Encoding UTF8

@@ -1,131 +1,565 @@
----
-layout: default
-permalink: index.html
-repository-name: e21-3yp-smart-traffic-control-system
-title: "HYDRA: HYbrid Dynamic Realtime Automation"
----
+# Create index.html with your exact content
+@'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYDRA: HYbrid Dynamic Realtime Automation</title>
+    <style>
+        /* University of Peradeniya Theme */
+        :root {
+            --pdn-blue: #0056b3;
+            --pdn-dark: #1a237e;
+            --pdn-light: #e8eaf6;
+            --pdn-accent: #3949ab;
+            --text-dark: #333;
+            --text-light: #666;
+            --border: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        /* University Header */
+        .university-header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--pdn-blue);
+        }
+        
+        .university-header h1 {
+            color: var(--pdn-blue);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .university-header h2 {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+        
+        /* Project Title */
+        .project-title {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--pdn-dark), var(--pdn-accent));
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .project-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-title .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Content Sections */
+        .section {
+            background: white;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--pdn-accent);
+        }
+        
+        .section h2 {
+            color: var(--pdn-dark);
+            border-bottom: 2px solid var(--pdn-light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .section h3 {
+            color: var(--pdn-accent);
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+        
+        /* Team Section */
+        .team-member {
+            background: var(--pdn-light);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--pdn-accent);
+        }
+        
+        .team-id {
+            font-weight: bold;
+            color: var(--pdn-dark);
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: var(--pdn-light);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .toc h2 {
+            color: var(--pdn-dark);
+            margin-bottom: 15px;
+        }
+        
+        .toc ol {
+            list-style: none;
+            counter-reset: toc-counter;
+        }
+        
+        .toc li {
+            counter-increment: toc-counter;
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid var(--pdn-accent);
+        }
+        
+        .toc li:before {
+            content: counter(toc-counter) ". ";
+            font-weight: bold;
+            color: var(--pdn-accent);
+            margin-right: 10px;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: var(--pdn-dark);
+            display: block;
+        }
+        
+        .toc a:hover {
+            color: var(--pdn-blue);
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background: var(--pdn-dark);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        tr:hover {
+            background: var(--pdn-light);
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Links */
+        a {
+            color: var(--pdn-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .link-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--pdn-light);
+            transition: all 0.3s;
+        }
+        
+        .link-card:hover {
+            border-color: var(--pdn-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .project-title h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- University Header -->
+    <div class="university-header">
+        <h1>Projects - Department of Computer Engineering</h1>
+        <h2>University of Peradeniya, Sri Lanka</h2>
+    </div>
 
-# HYDRA: HYbrid Dynamic Realtime Automation
+    <!-- Project Title -->
+    <div class="project-title">
+        <h1>HYDRA: HYbrid Dynamic Realtime Automation</h1>
+        <div class="subtitle">Smart Traffic Light Control System</div>
+    </div>
 
----
+    <!-- Team Section -->
+    <section class="section">
+        <h2>Team</h2>
+        <div class="team-member">
+            <span class="team-id">e21289</span>, Samadhini Perera, 
+            <a href="mailto:e21289@eng.pdn.ac.lk">e21289@eng.pdn.ac.lk</a>
+        </div>
+        <div class="team-member">
+            <span class="team-id">e21196</span>, Diwyanjali Jayasooriya, 
+            <a href="mailto:e21196@eng.pdn.ac.lk">e21196@eng.pdn.ac.lk</a>
+        </div>
+        <div class="team-member">
+            <span class="team-id">e21193</span>, Vedangi Nadeeshani, 
+            <a href="mailto:e21193@eng.pdn.ac.lk">e21193@eng.pdn.ac.lk</a>
+        </div>
+    </section>
 
-## Team
-- e21289, Samadhini Perera, [e21289@eng.pdn.ac.lk](mailto:e21289@eng.pdn.ac.lk)
-- e21196, Diwyanjali Jayasooriya, [e21196@eng.pdn.ac.lk](mailto:e21196@eng.pdn.ac.lk)
-- e21193, Vedangi Nadeeshani, [e21193@eng.pdn.ac.lk](mailto:e21193@eng.pdn.ac.lk)
+    <!-- Table of Contents -->
+    <nav class="toc">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#architecture">Solution Architecture</a></li>
+            <li><a href="#designs">Hardware & Software Designs</a></li>
+            <li><a href="#testing">Testing</a></li>
+            <li><a href="#budget">Detailed Budget</a></li>
+            <li><a href="#commercialization">Commercialization Plans</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#links">Links</a></li>
+        </ol>
+    </nav>
 
----
+    <!-- Introduction -->
+    <section id="introduction" class="section">
+        <h2>Introduction</h2>
+        
+        <h3>The Real-World Problem</h3>
+        <p>Urban congestion is one of the defining challenges of modern cities. Traditional traffic control systems rely on <strong>static, fixed-timer logic</strong> that is blind to real-world conditions. A traffic light stays red even when the road is empty, while kilometers of cars sit idling on the cross-street.</p>
+        
+        <p>Furthermore, standard systems fail to account for <strong>environmental factors</strong> and <strong>vehicle classification</strong>. Heavy vehicles take longer to accelerate, and wet roads increase braking distances, yet traffic lights treat every vehicle and every weather condition exactly the same.</p>
+        
+        <h3>The Solution</h3>
+        <p><strong>HYDRA (HYbrid Dynamic Realtime Automation)</strong> is an intelligent, adaptive traffic management system designed to replace static timers with <strong>dynamic, sensor-driven logic</strong>.</p>
+        
+        <p>HYDRA transforms isolated intersections into a <strong>connected neural network</strong>. By utilizing a "Green Wave" algorithm, it coordinates multiple intersections to allow platoons of vehicles to pass through without stopping. The system uniquely integrates <strong>heavy vehicle detection</strong> and <strong>rain sensors</strong> to adjust safety margins.</p>
+        
+        <p>For the prototype demonstration, HYDRA implements a <strong>fully automated kinetic model</strong> using a <strong>gravity-fed servo-barrier mechanism</strong> to physically drive vehicle queues automatically when the light turns green.</p>
+    </section>
 
-#### Table of Contents
-1. [Introduction](#introduction)
-2. [Solution Architecture](#solution-architecture)
-3. [Hardware & Software Designs](#hardware--software-designs)
-4. [Testing](#testing)
-5. [Detailed Budget](#detailed-budget)
-6. [Commercialization Plans](#commercialization-plans)
-7. [Conclusion](#conclusion)
-8. [Links](#links)
+    <!-- Solution Architecture -->
+    <section id="architecture" class="section">
+        <h2>Solution Architecture</h2>
+        
+        <h3>High-Level Overview</h3>
+        <p>HYDRA follows a <strong>Centralized-Edge Topology</strong> to ensure synchronized decision-making:</p>
+        
+        <ul>
+            <li><strong>The Physical Layer (Kinetic Model)</strong>: Dual-intersection road network with 4 paths each using gravity-assist drive and servo barriers.</li>
+            <li><strong>Edge Node Layer (The Limbs)</strong>: ESP32 Microcontrollers handling localized sensor processing (IR, Ultrasonic, Piezo, Rain).</li>
+            <li><strong>Central Intelligence Layer (The Brain)</strong>: Raspberry Pi / MQTT Broker running the "Green Wave" algorithm.</li>
+        </ul>
+    </section>
 
----
+    <!-- Hardware & Software Designs -->
+    <section id="designs" class="section">
+        <h2>Hardware & Software Designs</h2>
+        
+        <h3>Hardware Components</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Raspberry Pi 4</td>
+                    <td>Central MQTT Broker & Coordination Server</td>
+                </tr>
+                <tr>
+                    <td>ESP32 Dev Kit v1 (x2)</td>
+                    <td>Edge Nodes for Intersection A & B</td>
+                </tr>
+                <tr>
+                    <td>Ultrasonic Sensors (HC-SR04)</td>
+                    <td>Incoming vehicle detection</td>
+                </tr>
+                <tr>
+                    <td>IR Break-Beam Array</td>
+                    <td>Exact queue length counting</td>
+                </tr>
+                <tr>
+                    <td>Piezo Vibration Sensors</td>
+                    <td>Heavy vehicle (Truck/Bus) classification</td>
+                </tr>
+                <tr>
+                    <td>Rain Sensor Module</td>
+                    <td>Environmental monitoring for safety overrides</td>
+                </tr>
+                <tr>
+                    <td>SG90 / MG996R Servos</td>
+                    <td><strong>Automated Traffic Barrier Mechanism</strong></td>
+                </tr>
+                <tr>
+                    <td>Traffic Light LED Modules</td>
+                    <td>Visual signaling</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Software Components</h3>
+        <ul>
+            <li><strong>Edge Firmware (C++)</strong>: Runs on ESP32. Interrupt-based sensor reading.</li>
+            <li><strong>Central Logic (Python)</strong>: Impact-weighted traffic algorithm and Green Wave Calculator.</li>
+            <li><strong>Communication Protocols</strong>: MQTT for machine-to-machine communication over WiFi.</li>
+        </ul>
+    </section>
 
-## Introduction
+    <!-- Testing -->
+    <section id="testing" class="section">
+        <h2>Testing</h2>
+        
+        <h3>Functionality Testing</h3>
+        <ul>
+            <li><strong>The "Green Wave" Test:</strong> Verifying that a platoon released from Intersection A arrives at Intersection B exactly as the light turns Green.</li>
+            <li><strong>Heavy Vehicle Override:</strong> Dropping a weighted model car over the Piezo sensor to trigger extended Green time.</li>
+            <li><strong>Safety Mode:</strong> Spraying water on the Rain Sensor to verify the automatic increase in Yellow Light duration.</li>
+            <li><strong>Kinetic Mechanism:</strong> Ensuring Servo Barriers hold traffic at Red and release smoothly at Green.</li>
+        </ul>
+    </section>
 
-### The Real-World Problem
-Urban congestion is one of the defining challenges of modern cities. Traditional traffic control systems rely on **static, fixed-timer logic** that is blind to real-world conditions. A traffic light stays red even when the road is empty, while kilometers of cars sit idling on the cross-street.
+    <!-- Detailed Budget -->
+    <section id="budget" class="section">
+        <h2>Detailed Budget</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Cost (Rs.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Raspberry Pi 4</td>
+                    <td>Available</td>
+                    <td>26,000</td>
+                </tr>
+                <tr>
+                    <td>ESP32 Dev Module (x2)</td>
+                    <td>-</td>
+                    <td>2,600</td>
+                </tr>
+                <tr>
+                    <td>SG90 Servo Motors (x4)</td>
+                    <td>-</td>
+                    <td>1,800</td>
+                </tr>
+                <tr>
+                    <td>Ultrasonic Sensors (x4)</td>
+                    <td>-</td>
+                    <td>1,200</td>
+                </tr>
+                <tr>
+                    <td>IR Break Beam Sensors (x8)</td>
+                    <td>-</td>
+                    <td>2,400</td>
+                </tr>
+                <tr>
+                    <td>Piezo Vibration Sensors (x2)</td>
+                    <td>-</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>Rain Sensor Module</td>
+                    <td>-</td>
+                    <td>350</td>
+                </tr>
+                <tr>
+                    <td>Plywood/MDF for Model Base</td>
+                    <td>-</td>
+                    <td>3,500</td>
+                </tr>
+                <tr>
+                    <td>Model Cars (Die-cast)</td>
+                    <td>-</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>Power Supply (5V 2A)</td>
+                    <td>-</td>
+                    <td>1,500</td>
+                </tr>
+                <tr>
+                    <td>Wires, Breadboards, PCBs</td>
+                    <td>-</td>
+                    <td>2,000</td>
+                </tr>
+                <tr style="font-weight: bold; background: var(--pdn-light);">
+                    <td>Total Estimated Cost</td>
+                    <td></td>
+                    <td>44,450</td>
+                </tr>
+                <tr style="font-weight: bold; background: var(--pdn-light);">
+                    <td>Excluding Available Items</td>
+                    <td></td>
+                    <td>18,450</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-Furthermore, standard systems fail to account for **environmental factors** and **vehicle classification**. Heavy vehicles take longer to accelerate, and wet roads increase braking distances, yet traffic lights treat every vehicle and every weather condition exactly the same.
+    <!-- Commercialization Plans -->
+    <section id="commercialization" class="section">
+        <h2>Commercialization Plans</h2>
+        
+        <ul>
+            <li><strong>Smart City Infrastructure:</strong> Licensing the "Green Wave" algorithm to municipal councils.</li>
+            <li><strong>Industrial Logistics:</strong> Private traffic management for large ports and factories.</li>
+            <li><strong>Emergency Response:</strong> Premium module for ambulance "Flush Mode" via RF signals.</li>
+            <li><strong>Educational STEM Kits:</strong> Selling the "Gravity & Servo" model design to schools.</li>
+        </ul>
+    </section>
 
-### The Solution
-**HYDRA (HYbrid Dynamic Realtime Automation)** is an intelligent, adaptive traffic management system designed to replace static timers with **dynamic, sensor-driven logic**.
+    <!-- Conclusion -->
+    <section id="conclusion" class="section">
+        <h2>Conclusion</h2>
+        <p>HYDRA proves that traffic control does not need to be expensive or complex to be smart. By combining <strong>simple physics</strong> for the model with <strong>sophisticated logic</strong> for the controller, we have demonstrated a scalable solution to urban congestion.</p>
+    </section>
 
-HYDRA transforms isolated intersections into a **connected neural network**. By utilizing a "Green Wave" algorithm, it coordinates multiple intersections to allow platoons of vehicles to pass through without stopping. The system uniquely integrates **heavy vehicle detection** and **rain sensors** to adjust safety margins.
+    <!-- Links -->
+    <section id="links" class="section">
+        <h2>Links</h2>
+        
+        <div class="footer-links">
+            <div class="link-card">
+                <h3>Project Repository</h3>
+                <p><a href="https://github.com/cepdnaclk/e21-3yp-smart-traffic-control-system" target="_blank">GitHub Repository</a></p>
+            </div>
+            
+            <div class="link-card">
+                <h3>Project Page</h3>
+                <p><a href="https://cepdnaclk.github.io/e21-3yp-smart-traffic-control-system" target="_blank">Live Website</a></p>
+            </div>
+            
+            <div class="link-card">
+                <h3>Department</h3>
+                <p><a href="http://www.ce.pdn.ac.lk/" target="_blank">Computer Engineering</a></p>
+            </div>
+            
+            <div class="link-card">
+                <h3>University</h3>
+                <p><a href="https://eng.pdn.ac.lk/" target="_blank">Peradeniya</a></p>
+            </div>
+        </div>
+    </section>
 
-For the prototype demonstration, HYDRA implements a **fully automated kinetic model** using a **gravity-fed servo-barrier mechanism** to physically drive vehicle queues automatically when the light turns green.
-
----
-
-## Solution Architecture
-
-### High-Level Overview
-HYDRA follows a **Centralized-Edge Topology** to ensure synchronized decision-making:
-
-* **The Physical Layer (Kinetic Model)**: Dual-intersection road network with 4 paths each using gravity-assist drive and servo barriers.
-* **Edge Node Layer (The Limbs)**: ESP32 Microcontrollers handling localized sensor processing (IR, Ultrasonic, Piezo, Rain).
-* **Central Intelligence Layer (The Brain)**: Raspberry Pi / MQTT Broker running the "Green Wave" algorithm.
-
----
-
-## Hardware & Software Designs
-
-### Hardware Components
-
-| Component | Description |
-|--------|------------|
-| Raspberry Pi 4 | Central MQTT Broker & Coordination Server |
-| ESP32 Dev Kit v1 (x2) | Edge Nodes for Intersection A & B |
-| Ultrasonic Sensors (HC-SR04) | Incoming vehicle detection |
-| IR Break-Beam Array | Exact queue length counting |
-| Piezo Vibration Sensors | Heavy vehicle (Truck/Bus) classification |
-| Rain Sensor Module | Environmental monitoring for safety overrides |
-| SG90 / MG996R Servos | **Automated Traffic Barrier Mechanism** |
-| Traffic Light LED Modules | Visual signaling |
-
-### Software Components
-
-* **Edge Firmware (C++)**: Runs on ESP32. Interrupt-based sensor reading.
-* **Central Logic (Python)**: Impact-weighted traffic algorithm and Green Wave Calculator.
-* **Communication Protocols**: MQTT for machine-to-machine communication over WiFi.
-
----
-
-## Testing
-
-### Functionality Testing
-* **The "Green Wave" Test:** Verifying that a platoon released from Intersection A arrives at Intersection B exactly as the light turns Green.
-* **Heavy Vehicle Override:** Dropping a weighted model car over the Piezo sensor to trigger extended Green time.
-* **Safety Mode:** Spraying water on the Rain Sensor to verify the automatic increase in Yellow Light duration.
-* **Kinetic Mechanism:** Ensuring Servo Barriers hold traffic at Red and release smoothly at Green.
-
----
-
-## Detailed Budget
-
-| Item | Status | Cost (Rs.) |
-|------|--------|-----------|
-| Raspberry Pi 4 | Available | 26,000 |
-| ESP32 Dev Module (x2) | - | 2,600 |
-| SG90 Servo Motors (x4) | - | 1,800 |
-| Ultrasonic Sensors (x4) | - | 1,200 |
-| IR Break Beam Sensors (x8) | - | 2,400 |
-| Piezo Vibration Sensors (x2) | - | 600 |
-| Rain Sensor Module | - | 350 |
-| Plywood/MDF for Model Base | - | 3,500 |
-| Model Cars (Die-cast) | - | 2,500 |
-| Power Supply (5V 2A) | - | 1,500 |
-| Wires, Breadboards, PCBs | - | 2,000 |
-| **Total Estimated Cost** | | **44,450** |
-| **Excluding Available Items** | | **18,450** |
-
----
-
-## Commercialization Plans
-
-* **Smart City Infrastructure:** Licensing the "Green Wave" algorithm to municipal councils.
-* **Industrial Logistics:** Private traffic management for large ports and factories.
-* **Emergency Response:** Premium module for ambulance "Flush Mode" via RF signals.
-* **Educational STEM Kits:** Selling the "Gravity & Servo" model design to schools.
-
----
-
-## Conclusion
-
-HYDRA proves that traffic control does not need to be expensive or complex to be smart. By combining **simple physics** for the model with **sophisticated logic** for the controller, we have demonstrated a scalable solution to urban congestion.
-
----
-
-## Links
-
-- [Project Repository](https://github.com/cepdnaclk/{{ page.repository-name }}){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"}
-- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
-- [University of Peradeniya](https://eng.pdn.ac.lk/)
+    <script>
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Highlight current section in TOC
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.toc a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+'@ | Out-File -FilePath index.html -Encoding UTF8

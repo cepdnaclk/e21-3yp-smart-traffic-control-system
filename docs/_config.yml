@@ -1,5 +1,5 @@
-title: "HYDRA Project"
-description: "Smart Traffic Control System"
+title: "HYDRA"
+description: "HYbrid Dynamic Realtime Automation - Smart Traffic System"
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-remote-theme
